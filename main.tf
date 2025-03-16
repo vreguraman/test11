@@ -1,5 +1,5 @@
 # Map of instance names to public IP addresses
-variable "public_ips" {
+variable "private_ips" {
   type = map(string)
   default = {
     "instance-1" = "172.31.22.126",
@@ -13,7 +13,7 @@ module "ec2_instances" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
-  for_each      = var.public_ips
+  for_each      = var.private_ips
   name          = each.key
   ami           = "ami-04b4f1a9cf54c11d0"  # Replace with your AMI ID
   instance_type = "t2.micro"
