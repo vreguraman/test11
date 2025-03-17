@@ -17,3 +17,8 @@ resource "aws_db_instance" "example1" {
 output "db_endpoint" {
   value = aws_db_instance.example1.endpoint
 }
+
+output "db_password " {
+  value = aws_db_instance.example1.password
+  sensitive = true # marks outputs as sensitive
+}
